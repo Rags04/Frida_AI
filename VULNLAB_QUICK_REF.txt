@@ -1,0 +1,128 @@
+# VulnLab Test Cases - Quick Reference Card
+
+## ⚡ Quick Commands
+
+```powershell
+# Basic check with VulnLab tests
+.\webview_check.ps1 app.apk
+
+# Advanced analysis (detailed)
+python check_webview_advanced.py app.apk -v
+
+# JSON report (for automation)
+python check_webview.py app.apk --json
+
+# Save to file
+python check_webview.py app.apk -o report.txt
+
+# Generate Frida hooks
+python example_workflow.py app.apk --generate-hooks
+```
+
+## 📊 Vulnerability Quick Reference
+
+| # | Name | CVSS | Keywords | Category |
+|---|------|------|----------|----------|
+| 11.1 | Component Exposure | 9.1 | exported, intent-filter | IPC |
+| 11.2 | Intent Redirection | 8.3 | scheme, PendingIntent | IPC |
+| 11.3 | SQL Injection | 9.8 | ContentProvider, query | Data |
+| 11.4 | Deep Link Injection | 8.1 | deep-link, oauth | Input |
+| 11.5 | Broadcast Hijack | 7.4 | BroadcastReceiver | IPC |
+| 11.6 | Insecure Storage | 7.5 | SharedPreferences | Storage |
+| 11.7 | Crypto Failures | 7.5 | Cipher, ECB, MD5 | Crypto |
+| 11.8 | WebView JS Bridge | 9.3 | WebView, addJavascriptInterface | WebView ⭐ |
+| 11.9 | Dynamic Code Load | 8.8 | DexClassLoader | Code |
+
+## 🔍 What Gets Detected
+
+### Automatic Detection For:
+- ✅ All 9 OWASP vulnerabilities
+- ✅ WebView security issues
+- ✅ Insecure cryptography
+- ✅ Unprotected IPC components
+- ✅ Insecure data storage
+- ✅ Code injection vulnerabilities
+
+## 📋 Report Output Sections
+
+1. **OWASP Mobile Top 10 Vulnerabilities**
+   - Vulnerability ID (11.1-11.9)
+   - Name and CVSS score
+   - Keywords detected
+   - Test commands
+
+2. **WebView Analysis**
+   - WebView found status
+   - JavaScript enabled
+   - File access permissions
+   - Storage settings
+   - Custom clients
+
+3. **Security Recommendations**
+   - Specific fixes for each issue
+   - Code remediation examples
+   - Best practices
+
+## 🎯 Key Features
+
+**CVSS Scoring**
+- 9.0+ = CRITICAL 🔴
+- 7.0-8.9 = HIGH 🔴  
+- 5.0-6.9 = MEDIUM 🟠
+- <5.0 = LOW 🟡
+
+**Detection Methods**
+- Manifest scanning
+- DEX bytecode analysis
+- Source code patterns
+- API usage detection
+
+## 💡 Example Usage
+
+```powershell
+# Check your app
+.\webview_check.ps1 myapp.apk
+
+# Get detailed findings
+python check_webview_advanced.py myapp.apk -v
+
+# Export for reports
+python check_webview.py myapp.apk --json -o findings.json
+
+# Generate test scripts
+python example_workflow.py myapp.apk --generate-hooks
+```
+
+## 📚 Documentation
+
+- **VULNLAB_TEST_CASES.md** - Detailed vulnerability guide
+- **VULNLAB_INTEGRATION.md** - Integration instructions
+- **README_WEBVIEW.md** - Tool overview
+
+## 🔗 References
+
+- VulnLab: https://github.com/anpa1200/Vulnerable-APK
+- OWASP M-Top 10: https://owasp.org/www-project-mobile-top-10/
+- Android Security: https://developer.android.com/privacy-and-security
+
+## ✅ Verification
+
+```powershell
+# Verify tools work
+python check_webview.py -h
+python check_webview_advanced.py -h
+```
+
+## 🚀 First Steps
+
+1. Test against VulnLab.apk to see all detections
+2. Review VULNLAB_TEST_CASES.md for details
+3. Run against your applications
+4. Generate Frida hooks for testing
+5. Document findings in reports
+
+---
+
+**Status:** Ready to use
+**Vulnerabilities:** 9 types (11.1-11.9)
+**Updated:** May 11, 2026

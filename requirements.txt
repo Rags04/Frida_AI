@@ -1,0 +1,5 @@
+customtkinter
+fpdf
+adb-pywrapper
+requests
+frida-tools
